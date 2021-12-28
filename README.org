@@ -1,0 +1,5 @@
+* Monad Sessions
+** To get started
+   #+begin_src sh
+     yarn && yarn dev
+   #+end_src
