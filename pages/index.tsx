@@ -91,7 +91,7 @@ const renderFn = ({ left, top }: Pos, idx: number) => (
   </PositionedSvg>
 );
 
-const positions1 = [
+const positions1 = () => [
   { left: -10, top: 10 },
   { left: -6, top: -10 },
   { left: -2, top: 10 },
@@ -100,7 +100,7 @@ const positions1 = [
   { left: 16, top: 10 },
 ];
 
-const positions2 = [
+const positions2 = () => [
   { left: -1, top: -1 },
   { left: -2, top: -2 },
   { left: -3, top: -3 },
