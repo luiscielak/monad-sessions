@@ -5,9 +5,9 @@ type Pos = { left: number; top: number };
 
 const PositionedSvg = styled.svg<Pos>`
   position: absolute;
-  left: ${(props: Pos) => props.left}%;
-  top: ${(props: Pos) => props.top}%;
-  transform: scale(0.18);)
+  left: ${(props: Pos) => props.left}px;
+  top: ${(props: Pos) => props.top}px;
+  transform: scale(0.15);)
 `;
 
 type Dims = { width: number; height: number };
@@ -41,7 +41,7 @@ const renderFn = ({ left, top }: Pos, idx: number) => (
     key={idx}
   >
     <path
-      d="M.44,
+      d={`M.44,
     28.7Q9,
     168.37,
     69.56,
@@ -53,7 +53,7 @@ const renderFn = ({ left, top }: Pos, idx: number) => (
     1,
     75.12,
     30.88Q332.5,
-    56.68,
+    56.80,
     506.11,
     182.82q53.64,
     38.64,
@@ -86,7 +86,7 @@ const renderFn = ({ left, top }: Pos, idx: number) => (
     1.91,
     221.4-1.24,
     216.55.44,
-    208.7Z"
+    208.7Z`}
     />
   </PositionedSvg>
 );
@@ -124,16 +124,21 @@ const positions2 = () => [
   { left: 10, top: 10 },
 ];
 
+const N = 100;
+
 const transform1 = ({ top, left }: Pos) => ({
-  top: top / (10 - top) + 10 - top,
-  left: (10 - left) / left + (-10 + left) + left,
+  top: top / (N - top) + N - top,
+  left: (N - left) / left + (-N + left) + left,
 });
 
 const transform = (x: Pos) => x;
 
-const randInt = () => Math.floor(Math.random() * (10 - -10) + 10);
+const randInt = () => Math.floor(Math.random() * (N - -N) + N);
 
-const randPos = () => ({ left: randInt(), top: randInt() });
+const randPos = () => ({
+  left: Math.random() > 0.5 ? randInt() : randInt() * -1,
+  top: randInt(),
+});
 
 const positions = () =>
   Array(8)
